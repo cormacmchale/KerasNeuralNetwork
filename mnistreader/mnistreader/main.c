@@ -1,46 +1,42 @@
 #include <stdio.h>
 int main()
 {
-	// printf() displays the string inside quotation
-	//printf("Hello, World!");
+
+	//printf("test");
 
 	FILE *pointToMnist;
+	char *buffer;
+	size_t result;
 
-	int firstNumber;
-	int secondNumber;
-	int thirdNumber;
-	int endLine[50];
-	char ch;
-	char buf[2];
+	long lSize;
+	char buf;
 
 	pointToMnist = fopen("../../MNIST/train-images.idx3-ubyte","r");
-	//pointToMnist = fopen("../../MNIST/numbers.txt", "r");
-	//if (pointToMnist != NULL)
-	//{
-	//	printf("file found");
-	//}
 
-	while(fread(buf, 1, 2, pointToMnist))
+	fseek(pointToMnist, 0, SEEK_END);
+	lSize = ftell(pointToMnist);
+	rewind(pointToMnist);
+	buffer = (char*)malloc(sizeof(char)*lSize);
+	if (buffer == NULL) { fputs("Memory error", stderr); exit(2); }
+
+	result = fread(buffer, 1, lSize, pointToMnist);
+   
+	//print the first number - 00000803
+	for (int i = 1; i <= 7; i++)
 	{
-		printf("%02x%02x", buf[0], buf[1]);
-		if (feof(pointToMnist))
-		{
-			printf("ended");
-		}
+		printf("%02x ", buffer[i]);
+	}
 
-	};
-		//printf("Hello");
-		//fscanf(pointToMnist, "%d", &firstNumber);
-		//fgets(&endLine, 50, pointToMnist);
-		//printf("%s \n", endLine);
-		//printf("%d \n", firstNumber);
-		//printf("%c", ch);
+	//while(fread(&buf, 1, 1, pointToMnist))
+	//{
+	//	printf("%02x", buf);
+	//	if (feof(pointToMnist))
+	//	{
+	//		printf("ended");
+	//	}
+
+	//};
 		getch();
-		//break;
-	//fscanf(pointToMnist, "%d", firstNumber);
-	//printf(firstNumber, "%d");
-	//printf("%d", firstNumber);
-	getch();
 	fclose(pointToMnist);
 	return 0;
 }
