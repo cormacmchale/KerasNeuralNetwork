@@ -1,42 +1,48 @@
 #include <stdio.h>
+#include <stdint.h>
 int main()
 {
 
-	//printf("test");
-
 	FILE *pointToMnist;
-	char *buffer;
-	size_t result;
+	FILE *pointToLabels;
+	int i, j, k;
 
-	long lSize;
-	char buf;
+	uint8_t byte, labelbyte;
+	pointToMnist = fopen("../../MNIST/train-images.idx3-ubyte","rb");
+	pointToLabels = fopen("../../MNIST/train-labels.idx1-ubyte", "rb"); 
 
-	pointToMnist = fopen("../../MNIST/train-images.idx3-ubyte","r");
 
-	fseek(pointToMnist, 0, SEEK_END);
-	lSize = ftell(pointToMnist);
-	rewind(pointToMnist);
-	buffer = (char*)malloc(sizeof(char)*lSize);
-	if (buffer == NULL) { fputs("Memory error", stderr); exit(2); }
-
-	result = fread(buffer, 1, lSize, pointToMnist);
-   
-	//print the first number - 00000803
-	for (int i = 1; i <= 7; i++)
+	//print the labels for the first 4 images to check
+	for (i = 0; i <= 11; i++)
 	{
-		printf("%02x ", buffer[i]);
+		fread(&labelbyte, 1, 1, pointToLabels);
+		printf("%02x \n", labelbyte);
 	}
 
-	//while(fread(&buf, 1, 1, pointToMnist))
-	//{
-	//	printf("%02x", buf);
-	//	if (feof(pointToMnist))
-	//	{
-	//		printf("ended");
-	//	}
+	//move the pointer to the first image
+	for (i = 0; i <= 1; i++)
+	{
+		fread(&byte, 1, 1, pointToMnist);
+	//	printf("%02x \n", byte);
+	}
 
-	//};
-		getch();
+	//print the three images, using . and 0 characters from training Images
+	for (k = 0; k <= 3; k++)
+	{
+		for (i = 0; i <= 28; i++)
+		{
+			for (j = 0; j <= 28; j++)
+			{
+				fread(&byte, 1, 1, pointToMnist);
+				printf("%s", (byte > 127) ? "0" : ".");
+			}
+			printf("\n");
+		}
+		printf("\n");
+	}
+
+	getch();
 	fclose(pointToMnist);
+	fclose(pointToLabels);
 	return 0;
 }
