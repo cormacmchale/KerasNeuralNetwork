@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, json
 import numpy as py;
 x=py.empty
 app=Flask(__name__)
@@ -13,7 +13,7 @@ def addNumberPage():
 
 @app.route("/drawNumber")
 def drawNumberPage():
-    return render_template("drawNumber.html", x = x)
+    return render_template("drawNumber.html", x=x)
 
 ##run the app from the script
 if __name__ == "__main__":
