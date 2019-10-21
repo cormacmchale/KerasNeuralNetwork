@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Draw A Number</title>
+</head>
+<body onload="init()">
+    <input type="button" value="clear" onclick="erase()">  
+    <br>
+    <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000;"></canvas>
+    <br>
+    <input type="button" value="save" onclick="save()">
+<script type="text/javascript">
+//not an option messed with canvas
+//zoom into the canvas to draw the figure in correct pixel format
+//document.body.style.zoom="500%";
+context = document.getElementById('predictionCanvas').getContext("2d");
+//adapted from = https://stackoverflow.com/questions/2368784/draw-on-html5-canvas-using-a-mouse
+//variables
+var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_flag = false;
+        var x = "black",
+        y = 2;
+  //get the canvas and add the events
+        function init() {
+        canvas = document.getElementById('predictionCanvas');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+    }
+    function erase()
+    {
+        console.log("clear func");
+        ctx.clearRect(0, 0, 100, 100);
+    }
+    function save() {
+      //cowboy stuff
+      //save pixel Image to an array
+      var pythonArray = [];
+      var pixelData = ctx.getImageData(0, 0, h, w);
+      //convert all pixels to a single value
+      for(var i = 0; i<pixelData.data.length-1;i+=4)
+      {
+        var pixel = pixelData.data[i]+pixelData.data[i+1]+pixelData.data[i+2]+pixelData.data[i+3];
+        pythonArray.push(pixel);
+      }
+
+       //{{x}} = pythonArray;
+       //console.log(pythonArray.length);
+       //testing
+       //console.log(pythonArray[0]+""+pythonArray[1]+pythonArray[2]+pythonArray[3]+pythonArray[4]+pythonArray[5]+pythonArray[6]+pythonArray[7]+pythonArray[8]+pythonArray[9]+pythonArray[10]+pythonArray[11]
+       //          +pythonArray[12]+pythonArray[13]+pythonArray[14]+pythonArray[15]+pythonArray[16]+pythonArray[17]+pythonArray[18]+pythonArray[19]+pythonArray[20]+pythonArray[22]+pythonArray[23]
+       //          +pythonArray[24]+pythonArray[25]+pythonArray[26]+pythonArray[27]);
+    }   
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    function findxy(res, e) 
+    {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+</script>
+</body>
+</html>
