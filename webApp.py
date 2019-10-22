@@ -3,8 +3,10 @@ import json
 import numpy as py
 import keras as kr
 from keras.models import load_model
+import sys
 app=Flask(__name__)
 model = load_model('savedModel/my_model.h5')
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 @app.route("/")
 def firstFlaskPage():
@@ -25,7 +27,8 @@ def makePrediction():
     #save at specific place
     value = data['pixelArray']
     #turn to numpy array
-    prediction = (~py.array(value).reshape(1,784))
+    prediction = (py.array(value).reshape(1,784))
+    print(prediction, file=sys.stderr)
     #Reshape it so the model can make a prediction
         #this can be done on one line
         #predictThisValue = newArray.reshape(1,784)
