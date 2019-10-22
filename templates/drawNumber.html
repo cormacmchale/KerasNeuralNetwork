@@ -63,20 +63,35 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         //testing.. print image of digit to console
         //console.log(pythonArray.length);
         //testing
-        for(var j = 0; j<=pythonArray.length-28; j=j+28)
-        {
-        console.log(pythonArray[j]+""+pythonArray[j+1]+pythonArray[j+2]+pythonArray[j+3]+pythonArray[j+4]+pythonArray[j+5]+pythonArray[j+6]+pythonArray[j+7]+pythonArray[j+8]+pythonArray[j+9]+pythonArray[j+10]+pythonArray[j+11]
-                  +pythonArray[j+12]+pythonArray[j+13]+pythonArray[j+14]+pythonArray[j+15]+pythonArray[j+16]+pythonArray[j+17]+pythonArray[j+18]+pythonArray[j+19]+pythonArray[j+20]+pythonArray[j+22]+pythonArray[j+23]
-                  +pythonArray[j+24]+pythonArray[j+25]+pythonArray[j+26]+pythonArray[j+27]+"\n");
-        }
-            //makes a get request to itself I think??
-            $.get(
-            url="http://localhost:5000/drawNumber",
-            data={image:pythonArray}, 
-            success=function(data)
-            {
+        //for(var j = 0; j<=pythonArray.length-28; j=j+28)
+        //{
+        //console.log(pythonArray[j]+""+pythonArray[j+1]+pythonArray[j+2]+pythonArray[j+3]+pythonArray[j+4]+pythonArray[j+5]+pythonArray[j+6]+pythonArray[j+7]+pythonArray[j+8]+pythonArray[j+9]+pythonArray[j+10]+pythonArray[j+11]
+        //          +pythonArray[j+12]+pythonArray[j+13]+pythonArray[j+14]+pythonArray[j+15]+pythonArray[j+16]+pythonArray[j+17]+pythonArray[j+18]+pythonArray[j+19]+pythonArray[j+20]+pythonArray[j+22]+pythonArray[j+23]
+        //          +pythonArray[j+24]+pythonArray[j+25]+pythonArray[j+26]+pythonArray[j+27]+"\n");
+        //}
+            //not necessary for the moment I think
+            //makes a get request to the server
+            //this was requesting the information on the webpage - no need
+            //$.get(
+            //url="http://localhost:5000/drawNumber",
+            //data={image:pythonArray}, 
+            //success=function(data)
+            //{
                 //alert('page content: ' + data);
-            });
+            //});
+
+            //make a post request to the server
+            //Turn the array into a Json object.. and send an xmlhttprequest to the server
+            //var jsonArray = JSON.stringify(pythonArray);
+            //console.log(jsonArray);
+            //send the request
+            var xhr = new XMLHttpRequest();
+                        //if deployed properly then add server IP here
+                        xhr.open("POST", "makePrediction", true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        //should now send the JSON object array to the web server 
+                        //which we can handle in webApp.py with our python code
+                        xhr.send(JSON.stringify({'pixelArray': pythonArray}));
     }   
     function draw() {
         ctx.beginPath();
