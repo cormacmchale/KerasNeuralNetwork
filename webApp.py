@@ -1,12 +1,14 @@
 from flask import Flask, render_template, json, request, jsonify
 import json
-import numpy as py
+import numpy as np
 import keras as kr
 from keras.models import load_model
 import sys
-app=Flask(__name__)
+import sklearn.preprocessing as pre
 model = load_model('savedModel/my_model.h5')
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+#model.summary()
+
+app=Flask(__name__)
 
 @app.route("/")
 def firstFlaskPage():
@@ -27,17 +29,13 @@ def makePrediction():
     #save at specific place
     value = data['pixelArray']
     #turn to numpy array
-    prediction = (py.array(value).reshape(1,784))
-    print(prediction, file=sys.stderr)
-    #Reshape it so the model can make a prediction
-        #this can be done on one line
-        #predictThisValue = newArray.reshape(1,784)
-    #get that prediction
-    #answer = model.predict(prediction)
+    pixelInformation = (np.array(value).reshape(1,784))
+    #model.predict(pixelInformation)
+    print(pixelInformation, file=sys.stderr)
     #respond to the webPage    
-    return jsonify({'prediction': "hype"})
+    return jsonify({'prediction': "prediction placeholder"})
     
 ##run the app from the script
 ##actually start the web app running
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = True, threaded = False)
