@@ -10,7 +10,7 @@
     <br>
     <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000;"></canvas>
     <br>
-    <input type="button" value="save" onclick="save()">
+    <input type="button" value="save" onclick="saveImage()">
 <script type="text/javascript">
 //not an option messed with canvas
 //zoom into the canvas to draw the figure in correct pixel format
@@ -45,7 +45,8 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         console.log("clear func");
         ctx.clearRect(0, 0, 100, 100);
     }
-    function save() {
+    function saveImage() {
+      console.log("save func");
       //cowboy stuff
       //save pixel Image to an array
       var pythonArray = [];
@@ -57,11 +58,14 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         pythonArray.push(pixel);
       }
 
-       //console.log(pythonArray.length);
+       console.log(pythonArray.length);
        //testing
-       //console.log(pythonArray[0]+""+pythonArray[1]+pythonArray[2]+pythonArray[3]+pythonArray[4]+pythonArray[5]+pythonArray[6]+pythonArray[7]+pythonArray[8]+pythonArray[9]+pythonArray[10]+pythonArray[11]
-       //          +pythonArray[12]+pythonArray[13]+pythonArray[14]+pythonArray[15]+pythonArray[16]+pythonArray[17]+pythonArray[18]+pythonArray[19]+pythonArray[20]+pythonArray[22]+pythonArray[23]
-       //          +pythonArray[24]+pythonArray[25]+pythonArray[26]+pythonArray[27]);
+       for(var j = 0; j<=pythonArray.length-28; j=j+28)
+       {
+       console.log(pythonArray[j]+""+pythonArray[j+1]+pythonArray[j+2]+pythonArray[j+3]+pythonArray[j+4]+pythonArray[j+5]+pythonArray[j+6]+pythonArray[j+7]+pythonArray[j+8]+pythonArray[j+9]+pythonArray[j+10]+pythonArray[j+11]
+                 +pythonArray[j+12]+pythonArray[j+13]+pythonArray[j+14]+pythonArray[j+15]+pythonArray[j+16]+pythonArray[j+17]+pythonArray[j+18]+pythonArray[j+19]+pythonArray[j+20]+pythonArray[j+22]+pythonArray[j+23]
+                 +pythonArray[j+24]+pythonArray[j+25]+pythonArray[j+26]+pythonArray[j+27]+"\n");
+       }
     }   
     function draw() {
         ctx.beginPath();
