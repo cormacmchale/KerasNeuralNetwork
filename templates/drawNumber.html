@@ -86,12 +86,12 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
             //console.log(jsonArray);
             //send the request
             var xhr = new XMLHttpRequest();
-                        //if deployed properly then add server IP here
-                        xhr.open("POST", "makePrediction", true);
-                        xhr.setRequestHeader('Content-Type', 'application/json');
-                        //should now send the JSON object array to the web server 
-                        //which we can handle in webApp.py with our python code
-                        xhr.send(JSON.stringify({'pixelArray': pythonArray}));
+                //if deployed properly then add server IP here
+                xhr.open("POST", "makePrediction", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                //should now send the JSON object array to the web server 
+                //which we can handle in webApp.py with our python code
+                xhr.send(JSON.stringify({'pixelArray': pythonArray}));
     }   
     function draw() {
         ctx.beginPath();

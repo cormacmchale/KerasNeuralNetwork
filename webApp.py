@@ -1,10 +1,10 @@
 from flask import Flask, render_template, json, request, jsonify
 import json
 import numpy as py
-import sys
-
+import keras as kr
+from keras.models import load_model
 app=Flask(__name__)
-value=py.empty
+model = load_model('savedModel/my_model.h5')
 
 @app.route("/")
 def firstFlaskPage():
@@ -20,15 +20,19 @@ def drawNumberPage():
 
 @app.route("/makePrediction", methods=['POST'])
 def makePrediction():
+    #get Json data
     data = request.get_json()
+    #save at specific place
     value = data['pixelArray']
-    ##possible flow of program
-
-    ##import model here
-    ##pass it the numpy array
-    ##pass prediction back into webpage and return the new view
-
-    return jsonify({'result': value})
+    #turn to numpy array
+    prediction = (~py.array(value).reshape(1,784))
+    #Reshape it so the model can make a prediction
+        #this can be done on one line
+        #predictThisValue = newArray.reshape(1,784)
+    #get that prediction
+    #answer = model.predict(prediction)
+    #respond to the webPage    
+    return jsonify({'prediction': "hype"})
     
 ##run the app from the script
 ##actually start the web app running
