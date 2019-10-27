@@ -1,12 +1,8 @@
 from flask import Flask, render_template, json, request, jsonify
-import json
 import numpy as np
 import keras as kr
-from keras.models import load_model
 import sys
-import sklearn.preprocessing as pre
-model = load_model('savedModel/my_model.h5')
-#model.summary()
+from keras.models import load_model
 
 app=Flask(__name__)
 
@@ -28,11 +24,11 @@ def makePrediction():
     data = request.get_json()
     #save at specific place
     value = data['pixelArray']
-    #turn to numpy array
     pixelInformation = (np.array(value).reshape(1,784))
-    #model.predict(pixelInformation)
-    print(pixelInformation, file=sys.stderr)
-    #respond to the webPage    
+    #print(pixelInformation, file=sys.stderr)
+    numberRecoq = load_model('savedModel/my_modesl.h5')
+    prediction = numberRecoq.predict(pixelInformation).tolist()
+    #respond to the webPage   
     return jsonify({'prediction': "prediction placeholder"})
     
 ##run the app from the script
