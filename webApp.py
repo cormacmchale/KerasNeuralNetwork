@@ -30,7 +30,8 @@ def makePrediction():
     print(almost, file=sys.stderr)
     #prediction = numberRecoq.predict(pixelInformation).tolist()
     #respond to the webPage   
-    return jsonify({'prediction': "prediction placeholder"})
+    #return jsonify({'prediction': 'almost'})
+    return render_template("drawNumber.html")
     
 ##run the app from the script
 ##actually start the web app running
