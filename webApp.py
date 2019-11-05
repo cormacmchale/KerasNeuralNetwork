@@ -3,20 +3,13 @@ import numpy as np
 import keras as kr
 import sys
 from keras.models import load_model
+#thread issue fix
 from returnPrediction import abstractPredic
 numberRecoq = load_model('savedModel/my_model.h5')
 app=Flask(__name__)
 
 @app.route("/")
-def firstFlaskPage():
-    return render_template("flask.html")
-
-@app.route("/addNumber")
-def addNumberPage():
-    return render_template("addNumber.html")
-
-@app.route("/drawNumber")
-def drawNumberPage():
+def UI():
     return render_template("drawNumber.html")
 
 @app.route("/makePrediction", methods=['POST'])
@@ -31,7 +24,7 @@ def makePrediction():
     #prediction = numberRecoq.predict(pixelInformation).tolist()
     #respond to the webPage   
     #return jsonify({'prediction': 'almost'})
-    return render_template("drawNumber.html")
+    #return render_template("drawNumber.html")
     
 ##run the app from the script
 ##actually start the web app running
