@@ -8,7 +8,9 @@
 <body onload="init()">
     <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000; width:28px; height:28px"></canvas>
     <br>
-    <input type="button" value="predict" onclick="saveImage()"><input type="button" value="clear" onclick="erase()"><input type="button" value="redraw" onclick="redraw()">
+    <input type="button" value="predict" onclick="saveImage()">
+    <br>
+    <input type="button" value="clear" onclick="erase()">
     <span id=result>prediction</span>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -63,12 +65,12 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         //testing.. print image of digit to console
         //console.log(pythonArray.length);
         //testing
-        //for(var j = 0; j<=pythonArray.length-28; j=j+28)
-        //{
-        //console.log(pythonArray[j]+""+pythonArray[j+1]+pythonArray[j+2]+pythonArray[j+3]+pythonArray[j+4]+pythonArray[j+5]+pythonArray[j+6]+pythonArray[j+7]+pythonArray[j+8]+pythonArray[j+9]+pythonArray[j+10]+pythonArray[j+11]
-        //          +pythonArray[j+12]+pythonArray[j+13]+pythonArray[j+14]+pythonArray[j+15]+pythonArray[j+16]+pythonArray[j+17]+pythonArray[j+18]+pythonArray[j+19]+pythonArray[j+20]+pythonArray[j+22]+pythonArray[j+23]
-        //          +pythonArray[j+24]+pythonArray[j+25]+pythonArray[j+26]+pythonArray[j+27]+"\n");
-        //}
+        for(var j = 0; j<=pythonArray.length-28; j=j+28)
+        {
+        console.log(pythonArray[j]+""+pythonArray[j+1]+pythonArray[j+2]+pythonArray[j+3]+pythonArray[j+4]+pythonArray[j+5]+pythonArray[j+6]+pythonArray[j+7]+pythonArray[j+8]+pythonArray[j+9]+pythonArray[j+10]+pythonArray[j+11]
+                  +pythonArray[j+12]+pythonArray[j+13]+pythonArray[j+14]+pythonArray[j+15]+pythonArray[j+16]+pythonArray[j+17]+pythonArray[j+18]+pythonArray[j+19]+pythonArray[j+20]+pythonArray[j+22]+pythonArray[j+23]
+                  +pythonArray[j+24]+pythonArray[j+25]+pythonArray[j+26]+pythonArray[j+27]+"\n");
+        }
             //ajax request
             $.ajax({
                     type : "POST",
@@ -79,7 +81,7 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
                     {
                         document.getElementById("result").innerHTML = result;
                     }
-                });
+                   });
     }   
     function draw() {
         ctx.beginPath();
