@@ -19,13 +19,16 @@ def UI():
 @app.route("/makePrediction", methods=['POST'])
 def makePrediction():
     #get Json data
-    data = request.get_json()
+    value = request.json['pixelArray']
     #save at specific place
-    value = data['pixelArray']
+    #value = data['pixelArray']
+    #format info
     pixelInformation = (np.array(value).reshape(1,784))
-    almost = abstractPredic(pixelInformation, numberRecoq)
     #check prediction
-    print(almost, file=sys.stderr)
+    prediction = abstractPredic(pixelInformation, numberRecoq)
+    #return prediction in correct format
+    #return jsonify("prediction")
+    return jsonify(int(prediction))
     
 #run the app from the script
 #actually start the web app running

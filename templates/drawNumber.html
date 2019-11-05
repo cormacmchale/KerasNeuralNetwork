@@ -6,52 +6,53 @@
   <title>Draw A Number</title>
 </head>
 <body onload="init()">
-
-    <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000;"></canvas>
+    <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000; width:28px; height:28px"></canvas>
     <br>
-    <input type="button" value="predict" onclick="saveImage()"><input type="button" value="clear" onclick="erase()">  
+    <input type="button" value="predict" onclick="saveImage()"><input type="button" value="clear" onclick="erase()"><input type="button" value="redraw" onclick="redraw()">
+    <span id=result>prediction</span>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 //not an option messed with canvas
 //zoom into the canvas to draw the figure in correct pixel format
 //document.body.style.zoom="500%";
-context = document.getElementById('predictionCanvas').getContext("2d");
+            var pixelData = new ImageData(28,28);
+            canvas = document.getElementById('predictionCanvas');
+            ctx = canvas.getContext("2d");
+            w = canvas.width;
+            h = canvas.height;
 //adapted from = https://stackoverflow.com/questions/2368784/draw-on-html5-canvas-using-a-mouse
 //adtaped from = https://stackoverflow.com/questions/18796921/passing-javascript-array-to-flask
 //variables
 var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_flag = false;
-        var x = "black",
-        y = 2;
+        var x = "black", y = 2;
   //get the canvas and add the events
-        function init() {
-        canvas = document.getElementById('predictionCanvas');
-        ctx = canvas.getContext("2d");
-        w = canvas.width;
-        h = canvas.height;
-        canvas.addEventListener("mousemove", function (e) {
-            findxy('move', e)
-        }, false);
-        canvas.addEventListener("mousedown", function (e) {
-            findxy('down', e)
-        }, false);
-        canvas.addEventListener("mouseup", function (e) {
-            findxy('up', e)
-        }, false);
-        canvas.addEventListener("mouseout", function (e) {
-            findxy('out', e)
-        }, false);
-    }
+        function init() 
+        {
+            canvas.addEventListener("mousemove", function (e) {
+                findxy('move', e)
+            }, false);
+            canvas.addEventListener("mousedown", function (e) {
+                findxy('down', e)
+            }, false);
+            canvas.addEventListener("mouseup", function (e) {
+                findxy('up', e)
+            }, false);
+            canvas.addEventListener("mouseout", function (e) {
+                findxy('out', e)
+            }, false);
+        }
     function erase()
     {
         console.log("clear func");
-        ctx.clearRect(0, 0, 100, 100);
+        ctx.clearRect(0, 0, h, w);
     }
-    function saveImage() {
-      console.log("save func");
+    function saveImage()
+    {
+      //console.log("save func");
       //cowboy stuff
       //save pixel Image to an array
       var pythonArray = [];
-      var pixelData = ctx.getImageData(0, 0, h, w);
+      pixelData = ctx.getImageData(0, 0, h, w);
       //convert all pixels to a single value
       //from 4 values per pixel to one
       for(var i = 0; i<pixelData.data.length-1;i+=4)
@@ -68,29 +69,17 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         //          +pythonArray[j+12]+pythonArray[j+13]+pythonArray[j+14]+pythonArray[j+15]+pythonArray[j+16]+pythonArray[j+17]+pythonArray[j+18]+pythonArray[j+19]+pythonArray[j+20]+pythonArray[j+22]+pythonArray[j+23]
         //          +pythonArray[j+24]+pythonArray[j+25]+pythonArray[j+26]+pythonArray[j+27]+"\n");
         //}
-            //not necessary for the moment I think
-            //makes a get request to the server
-            //this was requesting the information on the webpage - no need
-            //$.post(
-            //url="makePrediction",
-            //data={image:pythonArray}, 
-            //success=function(data)
-            //{
-                //alert('page content: ' + data);
-            //});
-
-            //make a post request to the server
-            //Turn the array into a Json object.. and send an xmlhttprequest to the server
-            //var jsonArray = JSON.stringify(pythonArray);
-            //console.log(jsonArray);
-            //send the request
-                var xhr = new XMLHttpRequest();
-                //if deployed properly then add server IP here
-                xhr.open("POST", "makePrediction", true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                //should now send the JSON object array to the web server 
-                //which we can handle in webApp.py with our python code
-                xhr.send(JSON.stringify({'pixelArray': pythonArray}));
+            //ajax request
+            $.ajax({
+                    type : "POST",
+                    url : "/makePrediction",
+                    data: JSON.stringify({'pixelArray': pythonArray}),
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function(result)
+                    {
+                        document.getElementById("result").innerHTML = result;
+                    }
+                });
     }   
     function draw() {
         ctx.beginPath();
