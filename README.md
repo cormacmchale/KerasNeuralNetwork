@@ -31,15 +31,17 @@ This is a Web application designed using four components.
 3. Html and Javascript - The view given to the browser by flask, the following are links to the parts of the Repo containing documentation on this.
  * [Sending the Data Drawn on the html canvas to the server, references and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/5)
  
- 4.Mnist Data set
-  * [Documentation of learning how to consume the Data set](https://github.com/cormacmchale/KerasNeuralNetwork/issues/3)
-  * [c++ code for reading the data](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/mnistreader/mnistreader/main.c)
+4.Mnist Data set
+ * [Documentation of learning how to consume the Data set](https://github.com/cormacmchale/KerasNeuralNetwork/issues/3)
+ * [c++ code for reading the data](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/mnistreader/mnistreader/main.c)
   
 *This was eventually handled in the python code while training the Neural network (See the Training the model link). This section was just an attempt to fully understand the format of the data
  
 Finally
 ======
 After completing the required functionality of the program functionality of the program all changes made for improvement were documented here.
+
 [Cleaning up the code](https://github.com/cormacmchale/KerasNeuralNetwork/issues/6)
+
 [Training a better network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/4)
 
