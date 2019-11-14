@@ -20,17 +20,18 @@ This is a Web application designed using four components.
 1. Keras - To build and train the Model, the following are links to the parts of the Repo containing documentation on this.
 
 * [Learning to train the neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/2)
-* [The References and problems encountered while trying to improve the Neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/4)
+* [Problems encountered while trying to improve the Neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/4)
 * [Learning keras using a juptyer notebook](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/NeuralNetwork%20Practice.ipynb)
 * [Training the model using a juptyer notebook](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/Project.ipynb)
 * [Trained Model saved here](https://github.com/cormacmchale/KerasNeuralNetwork/tree/master/savedModel)
  
 2. Flask - The Web Server, the following are links to the parts of the Repo containing documentation on this.
-* [Learning to use flask with documentation of refernces and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/1)
+* [Learning to use flask](https://github.com/cormacmchale/KerasNeuralNetwork/issues/1)
 * [Commented python code of the Web Server](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/webApp.py)
  
 3. Html and Javascript - The view given to the browser by flask, the following are links to the parts of the Repo containing documentation on this.
-* [Sending the Data Drawn on the html canvas to the server, references and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/5)
+* [Sending the Data Drawn on the html canvas to the server](https://github.com/cormacmchale/KerasNeuralNetwork/issues/5)
+* [Commented html and Javascript](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/templates/drawNumber.html)
  
 4.Mnist Data set
 * [Documentation of learning how to consume the Data set](https://github.com/cormacmchale/KerasNeuralNetwork/issues/3)
