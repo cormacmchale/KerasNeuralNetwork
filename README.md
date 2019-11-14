@@ -18,22 +18,23 @@ Description
 This is a Web application designed using four components.
 
 1. Keras - To build and train the Model, the following are links to the parts of the Repo containing documentation on this.
- * [Learning to train the neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/2)
- * [The References and problems encountered while trying to improve the Neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/4)
- * [Learning keras using a juptyer notebook](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/NeuralNetwork%20Practice.ipynb)
- * [Training the model using a juptyer notebook](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/Project.ipynb)
- * [Trained Model saved here](https://github.com/cormacmchale/KerasNeuralNetwork/tree/master/savedModel)
 
+* [Learning to train the neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/2)
+* [The References and problems encountered while trying to improve the Neural Network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/4)
+* [Learning keras using a juptyer notebook](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/NeuralNetwork%20Practice.ipynb)
+* [Training the model using a juptyer notebook](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/Project.ipynb)
+* [Trained Model saved here](https://github.com/cormacmchale/KerasNeuralNetwork/tree/master/savedModel)
+ 
 2. Flask - The Web Server, the following are links to the parts of the Repo containing documentation on this.
- * [Learning to use flask with documentation of refernces and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/1)
- * [Commented python code of the Web Server](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/webApp.py)
+* [Learning to use flask with documentation of refernces and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/1)
+* [Commented python code of the Web Server](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/webApp.py)
  
 3. Html and Javascript - The view given to the browser by flask, the following are links to the parts of the Repo containing documentation on this.
- * [Sending the Data Drawn on the html canvas to the server, references and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/5)
+* [Sending the Data Drawn on the html canvas to the server, references and problems](https://github.com/cormacmchale/KerasNeuralNetwork/issues/5)
  
 4.Mnist Data set
- * [Documentation of learning how to consume the Data set](https://github.com/cormacmchale/KerasNeuralNetwork/issues/3)
- * [c++ code for reading the data](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/mnistreader/mnistreader/main.c)
+* [Documentation of learning how to consume the Data set](https://github.com/cormacmchale/KerasNeuralNetwork/issues/3)
+* [c++ code for reading the data](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/mnistreader/mnistreader/main.c)
   
 *This was eventually handled in the python code while training the Neural network (See the Training the model link). This section was just an attempt to fully understand the format of the data
  
