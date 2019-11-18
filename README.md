@@ -41,7 +41,7 @@ This is a Web application designed using four components.
  
 Finally
 ======
-After completing the required functionality of the program functionality of the program all changes made for improvement were documented here.
+After completing the required functionality of the program all changes made for improvement were documented here.
 
 [Cleaning up the code](https://github.com/cormacmchale/KerasNeuralNetwork/issues/6)
 
