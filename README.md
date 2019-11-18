@@ -4,7 +4,7 @@ Neural Network project
 To Download and run the program
 ======
 * Clone the Repo.
-* Enter the Directory form the command line.
+* Enter the Directory from the command line.
 * Run the command "python webApp.py"
 * Visit localhost:5000.
 * Draw a digit and press "prediction" to display the guess of the drawn digit by the Neural network.
