@@ -4,7 +4,7 @@ Neural Network project
 To Download and run the program
 ======
 * Clone the Repo.
-* Enter the Directory form the command line.
+* Enter the Directory from the command line.
 * Run the command "python webApp.py"
 * Visit localhost:5000.
 * Draw a digit and press "prediction" to display the guess of the drawn digit by the Neural network.
@@ -41,7 +41,7 @@ This is a Web application designed using four components.
  
 Finally
 ======
-After completing the required functionality of the program functionality of the program all changes made for improvement were documented here.
+After completing the required functionality of the program all changes made for improvement were documented here.
 
 [Cleaning up the code](https://github.com/cormacmchale/KerasNeuralNetwork/issues/6)
 
