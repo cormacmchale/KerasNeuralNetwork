@@ -20,14 +20,11 @@ def UI():
 def makePrediction():
     #get Json data
     value = request.json['pixelArray']
-    #save at specific place
-    #value = data['pixelArray']
     #format info
     pixelInformation = (np.array(value).reshape(1,784))
     #check prediction
     prediction = abstractPredic(pixelInformation, numberRecoq)
     #return prediction in correct format
-    #return jsonify("prediction")
     return jsonify(int(prediction))
     
 #run the app from the script
