@@ -60,9 +60,9 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
       for(var i = 0; i<pixelData.data.length-1;i+=4)
       {
         var pixel = pixelData.data[i]+pixelData.data[i+1]+pixelData.data[i+2]+pixelData.data[i+3];
-        if(pixel == 255)
+        if(pixel > 0)
         {
-            pixel = 1;
+            pixel = 50000;
         }
         else
         {
