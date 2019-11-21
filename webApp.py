@@ -6,7 +6,7 @@ import keras as kr
 import sys
 #get model onto server for use
 from keras.models import load_model
-numberRecoq = load_model('savedModel/my_model.h5')
+numberRecoq = load_model('savedModel/freshlyTrained.h5')
 #thread issue fix
 from returnPrediction import abstractPredic
 #initialize app
