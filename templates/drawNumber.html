@@ -6,17 +6,15 @@
   <title>Draw A Number</title>
 </head>
 <body onload="init()">
-    <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000; width:28px; height:28px"></canvas>
+    <canvas id="predictionCanvas" width="28" height="28" style="border:1px solid #000000;"></canvas>
     <br>
     <input type="button" value="predict" onclick="saveImage()">
     <br>
-    <input type="button" value="clear" onclick="erase()">
     <span id=result>prediction</span>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 //not an option messed with canvas
 //zoom into the canvas to draw the figure in correct pixel format
-//document.body.style.zoom="500%";
             var pixelData = new ImageData(28,28);
             canvas = document.getElementById('predictionCanvas');
             ctx = canvas.getContext("2d");
@@ -45,16 +43,18 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         }
     function erase()
     {
-        console.log("clear func");
-        ctx.clearRect(0, 0, h, w);
+        ctx.clearRect(0, 0, 280, 280);
+    }
+    function getData()
+    {
+        pixelData = ctx.getImageData(0, 0, 28, 28);
     }
     function saveImage()
     {
-      //console.log("save func");
-      //cowboy stuff
       //save pixel Image to an array
       var pythonArray = [];
-      pixelData = ctx.getImageData(0, 0, h, w);
+      getData()
+      setTimeout(erase(),0);
       //convert all pixels to a single value
       //from 4 values per pixel to one
       for(var i = 0; i<pixelData.data.length-1;i+=4)
@@ -62,7 +62,7 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
         var pixel = pixelData.data[i]+pixelData.data[i+1]+pixelData.data[i+2]+pixelData.data[i+3];
         if(pixel > 0)
         {
-            pixel = 50000;
+            pixel = 1;
         }
         else
         {
@@ -89,7 +89,7 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_f
                     {
                         document.getElementById("result").innerHTML = result;
                     }
-                   });
+                  });
     }   
     function draw() {
         ctx.beginPath();
