@@ -91,7 +91,7 @@ function saveImage() {
         var pixel = pixelData.data[i] + pixelData.data[i + 1] + pixelData.data[i + 2] + pixelData.data[i + 3];
         //alter it to a similar format that the Mnist has been changed to
         if (pixel > 0) {
-            pixel = 1;
+            pixel = 5.5;
         }
         else {
             pixel = 0
