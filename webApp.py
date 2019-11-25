@@ -28,6 +28,6 @@ def makePrediction():
     return jsonify(int(prediction))
     
 #run the app from the script
-#actually start the web app running
+#start the web app in debug mode
 if __name__ == "__main__":
     app.run(debug = True)
