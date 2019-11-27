@@ -1,6 +1,16 @@
 # KerasNeuralNetwork
 Neural Network project
 
+Software Requirements
+======
+The following packages are required to run the Program correctly. I recommend the latest versions for everything to be compatable. The actual version in brackets beside the package is what I have currently on my machine. A browser is needed to interact with the server. I used chrome for the project but anything modern will do.
+
+* Python (3.7.4)
+* Numpy (1.17.2)
+* TensorFlow (2.0.0rc1)
+* Keras (2.3.1)
+* Flask (1.1.1)
+
 To Download and run the program
 ======
 * Clone the Repo.
