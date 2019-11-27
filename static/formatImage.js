@@ -106,7 +106,7 @@ function saveImage() {
         data: JSON.stringify({ 'pixelArray': pythonArray }),
         contentType: 'application/json;charset=UTF-8',
         success: function (result) {
-            //change result on wenpage to prediction
+            //change result on webpage to prediction
             document.getElementById("result").innerHTML = result;
         }
     });
