@@ -10,7 +10,7 @@ h = canvas.height;
 //adtaped from = https://stackoverflow.com/questions/18796921/passing-javascript-array-to-flask
 //variables for teh drawing functionality
 var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, dot_flag = false;
-var x = "black", y = 1.65;
+var x = "black", y = 3;
 //get the canvas and add the events
 init()
 function init() {
@@ -51,7 +51,7 @@ function findxy(res, e) {
             ctx.beginPath();
             ctx.fillStyle = x;
             //thickness = 1.65 seems to have goo results
-            ctx.fillRect(currX, currY, 1.65, 1.65);
+            ctx.fillRect(currX, currY, 3, 3);
             ctx.closePath();
             dot_flag = false;
         }
@@ -91,7 +91,7 @@ function saveImage() {
         var pixel = pixelData.data[i] + pixelData.data[i + 1] + pixelData.data[i + 2] + pixelData.data[i + 3];
         //alter it to a similar format that the Mnist has been changed to
         if (pixel > 0) {
-            pixel = 5.5;
+            pixel = 1;
         }
         else {
             pixel = 0
