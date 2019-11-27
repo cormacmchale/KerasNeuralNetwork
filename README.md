@@ -41,7 +41,8 @@ This is a Web application designed using four components.
  
 3. Html and Javascript - The view given to the browser by flask, the following are links to the parts of the Repo containing documentation on this.
 * [Sending the Data Drawn on the html canvas to the server](https://github.com/cormacmchale/KerasNeuralNetwork/issues/5)
-* [Commented html and Javascript](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/templates/drawNumber.html)
+* [Html](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/templates/drawNumber.html)
+* [Commented JavaScript](https://github.com/cormacmchale/KerasNeuralNetwork/blob/master/static/formatImage.js)
  
 4.Mnist Data set
 * [Documentation of learning how to consume the Data set](https://github.com/cormacmchale/KerasNeuralNetwork/issues/3)
