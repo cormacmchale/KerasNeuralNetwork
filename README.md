@@ -3,7 +3,7 @@ Neural Network project
 
 Software Requirements
 ======
-The following packages are required to run the Program correctly. I recommend the latest versions for everything to be compatable. The actual version in brackets beside the package is what I have currently on my machine. A browser is needed to interact with the server. I used chrome for the project but anything modern will do.
+The following packages are required to run the Program correctly. I recommend the latest versions for everything to be compatable. The actual version in brackets beside the package is what I have currently on my machine. A browser is needed to interact with the server. I used chrome for the project but anything modern will do. I recommend using [Anaconda](https://www.anaconda.com/) as a package Manager for python libraries. Once downloaded you can use "conda list" to see all the python libraries on your machine. Then "conda install <packageName>" to add any extra libraries that you might need.
 
 * Python (3.7.4)
 * Numpy (1.17.2)
