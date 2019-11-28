@@ -1,4 +1,4 @@
-//Image Data Object for collecting the Image Data for the server
+//Image Data Object for collecting the pixel Data of the scaled image
 var pixelData = new ImageData(28, 28);
 //used as a placeholder to scale and re-draw image correctly
 var imageObject = new Image();
@@ -78,22 +78,31 @@ function findxy(res, e) {
 //also reset altered scale
 function erase() {
     ctx.clearRect(0, 0, h, w);
+    //restore the original scaling of the image
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+    //empty the array for the next image
     pythonArray = [];
 }
 //collect the Image data of the canvas
 function getData() {
+    //gets the data Url of the images
     imageObject.src = canvas.toDataURL();
+    //when this happens...
     imageObject.onload = function () {
+        //erase the canvas
         erase();
+        //scale the canvas
         ctx.scale(.2, .2);
+        //draw the image you have now saved to Imageobject
+        //this will draw an Image scaled to the 28x28 we need
         ctx.drawImage(imageObject, 0, 0);
+        //get the pixel data of that
         pixelData = ctx.getImageData(0, 0, 28, 28);
         //convert all pixels to a single value
         //from 4 values per pixel to one
         for (var i = 0; i < pixelData.data.length - 1; i += 4) {
             var pixel = pixelData.data[i] + pixelData.data[i + 1] + pixelData.data[i + 2] + pixelData.data[i + 3];
-            //alter it to a similar format that the Mnist has been changed to
+            //alter it to a similar format that the Mnist dataset has been changed to
             if (pixel > 0) {
                 pixel = 1;
                 pythonArray.push(pixel)
@@ -116,6 +125,7 @@ function getData() {
                 document.getElementById("result").innerHTML = result;
             }
         });
+        //push erase to the back of the job queue to take place after everything has been completed
         setTimeout(erase(), 0);
     }
     //for viewing on console
@@ -126,5 +136,4 @@ function getData() {
                 + pythonArray[j + 24] + pythonArray[j + 25] + pythonArray[j + 26] + pythonArray[j + 27] + "\n");
         }
     }
-
 }  
