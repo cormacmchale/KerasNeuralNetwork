@@ -58,3 +58,5 @@ After completing the required functionality of the program all changes made for 
 
 [Training a better network](https://github.com/cormacmchale/KerasNeuralNetwork/issues/4)
 
+[Scaling the canvas](https://github.com/cormacmchale/KerasNeuralNetwork/issues/7)
+
