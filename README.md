@@ -60,3 +60,5 @@ After completing the required functionality of the program all changes made for 
 
 [Scaling the canvas](https://github.com/cormacmchale/KerasNeuralNetwork/issues/7)
 
+[The secret to Neural Networks](https://www.youtube.com/watch?v=m5vw4ajnWGA)
+
